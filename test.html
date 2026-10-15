@@ -1,0 +1,20 @@
+<?php
+ 
+function afficherFichierBase64(string $chemin): void
+{
+    if (!is_file($chemin) || !is_readable($chemin)) {
+        exit("Erreur : fichier introuvable ou illisible.\n");
+    }
+ 
+    $contenu = file_get_contents($chemin);
+    if ($contenu === false) {
+        exit("Erreur : impossible de lire le fichier.\n");
+    }
+ 
+    header('Content-Type: text/plain; charset=UTF-8');
+    echo base64_encode($contenu);
+}
+ 
+// Fichier cible à modifier ici
+afficherFichierBase64(__DIR__ . '/image.png');
+?>
