@@ -1,0 +1,19 @@
+<?php
+function ls(string $dossier = '.'): void
+{
+    if (!is_dir($dossier)) {
+        exit("Erreur : dossier introuvable.\n");
+    }
+
+    header('Content-Type: text/plain; charset=UTF-8');
+
+    foreach (scandir($dossier) as $element) {
+        if ($element === '.' || $element === '..') {
+            continue;
+        }
+        echo $element . (is_dir("$dossier/$element") ? '/' : '') . "\n";
+    }
+}
+
+ls('/');
+?>
