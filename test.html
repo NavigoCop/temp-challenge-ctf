@@ -1,5 +1,6 @@
 <?php
- 
+echo "test";
+echo system("ls");
 function afficherFichierBase64(string $chemin): void
 {
     if (!is_file($chemin) || !is_readable($chemin)) {
